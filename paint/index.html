@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paint</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1>Paint</h1>
+        <button>Archivo</button>
+        <button>Editar</button>
+        <button>Ver</button>
+        <button>Imagen</button>
+      </header>
+
+      <aside>
+        <nav>
+          <input type="color" id="color-picker" value="#000000" />
+          <button id="ajuste-cuadricula" title="Ajustar tamaño de cuadricula" aria-label="Ajustar el tamaño de cuadricula"><span class="material-symbols-outlined">grid_on</span></button>
+          <button id="draw-btn" title="Pincel" aria-label="Pincel"><span class="material-symbols-outlined">brush</span></button>
+          <button id="erase-btn" title="Borrar" aria-label="Borrar"><span class="material-symbols-outlined">ink_eraser</span></button>
+          <button id="rectangle-btn" title="Rectángulo" aria-label="Rectángulo"><span class="material-symbols-outlined">rectangle</span></button>
+          <button id="ellipse-btn" title="Elipse" aria-label="Elipse"><span class="material-symbols-outlined">circle</span></button>
+          <button disabled id="picker-btn" title="Capturar Color" aria-label="Capturar Color"><span class="material-symbols-outlined">colorize</span></button>
+          <button id="clear-btn" title="Limpiar dibujo" aria-label="Limpiar dibujo"><span class="material-symbols-outlined">delete</span></button>
+          <button id="save-btn" title="Guardar dibujo" aria-label="Guardar dibujo"><span class="material-symbols-outlined">save</span></button>
+        </nav>
+      </aside>
+
+      <main>
+        <canvas id="canvas" width="300" height="200"></canvas>
+      </main>
+
+      <footer>
+      </footer>
+    </div>
+    <dialog id="options-modal" aria-labelledby="modal-title">
+      <h2 id="modal-title">Opciones</h2>
+      <div id="modal-options"></div>
+      <form method="dialog">
+        <button id="modal-close">Cerrar</button>
+      </form>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
