@@ -10,41 +10,89 @@
   <body>
     <div id="container">
       <header>
-        <h1>Paint</h1>
-        <button>Archivo</button>
-        <button>Editar</button>
-        <button>Ver</button>
-        <button>Imagen</button>
+        <div class="brand">
+          <h1>Paint</h1>
+        </div>
+        <span id="grid-status" class="status">Matriz 24 × 16</span>
+        <span class="spacer"></span>
+        <button id="grid-btn" class="header-btn" title="Tamaño de la matriz" aria-label="Tamaño de la matriz">
+          <span class="material-symbols-outlined">grid_on</span>
+          <span>Matriz</span>
+        </button>
       </header>
 
-      <aside>
-        <nav>
-          <input type="color" id="color-picker" value="#000000" />
-          <button id="ajuste-cuadricula" title="Ajustar tamaño de cuadricula" aria-label="Ajustar el tamaño de cuadricula"><span class="material-symbols-outlined">grid_on</span></button>
-          <button id="draw-btn" title="Pincel" aria-label="Pincel"><span class="material-symbols-outlined">brush</span></button>
-          <button id="erase-btn" title="Borrar" aria-label="Borrar"><span class="material-symbols-outlined">ink_eraser</span></button>
-          <button id="rectangle-btn" title="Rectángulo" aria-label="Rectángulo"><span class="material-symbols-outlined">rectangle</span></button>
-          <button id="ellipse-btn" title="Elipse" aria-label="Elipse"><span class="material-symbols-outlined">circle</span></button>
-          <button disabled id="picker-btn" title="Capturar Color" aria-label="Capturar Color"><span class="material-symbols-outlined">colorize</span></button>
-          <button id="clear-btn" title="Limpiar dibujo" aria-label="Limpiar dibujo"><span class="material-symbols-outlined">delete</span></button>
-          <button id="save-btn" title="Guardar dibujo" aria-label="Guardar dibujo"><span class="material-symbols-outlined">save</span></button>
-        </nav>
-      </aside>
+      <div class="workspace">
+        <aside>
+          <nav aria-label="Herramientas">
+            <input type="color" id="color-picker" value="#000000" title="Color del pincel" aria-label="Color del pincel" />
 
-      <main>
-        <canvas id="canvas" width="300" height="200"></canvas>
-      </main>
+            <button id="draw-btn" class="tool active" title="Pincel" aria-label="Pincel" aria-pressed="true">
+              <span class="material-symbols-outlined">brush</span>
+            </button>
+            <button id="erase-btn" class="tool" title="Borrar" aria-label="Borrar" aria-pressed="false">
+              <span class="material-symbols-outlined">ink_eraser</span>
+            </button>
+
+            <span class="separator" aria-hidden="true"></span>
+
+            <button id="rectangle-btn" class="tool" title="Rectángulo" aria-label="Rectángulo" aria-pressed="false">
+              <span class="material-symbols-outlined">rectangle</span>
+            </button>
+            <button id="ellipse-btn" class="tool" title="Círculo / elipse" aria-label="Círculo o elipse" aria-pressed="false">
+              <span class="material-symbols-outlined">circle</span>
+            </button>
+            <button id="picker-btn" class="tool" title="Capturar color" aria-label="Capturar color" aria-pressed="false">
+              <span class="material-symbols-outlined">colorize</span>
+            </button>
+
+            <span class="separator" aria-hidden="true"></span>
+
+            <button id="clear-btn" title="Limpiar dibujo" aria-label="Limpiar dibujo">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+            <button id="save-btn" title="Guardar dibujo" aria-label="Guardar dibujo">
+              <span class="material-symbols-outlined">save</span>
+            </button>
+          </nav>
+        </aside>
+
+        <main>
+          <canvas id="canvas" width="480" height="320" aria-label="Lienzo de dibujo"></canvas>
+        </main>
+      </div>
 
       <footer>
+        <span class="footer-label">Colores rápidos</span>
+        <div class="palette" id="palette" role="group" aria-label="Paleta de colores rápidos"></div>
       </footer>
     </div>
+
     <dialog id="options-modal" aria-labelledby="modal-title">
-      <h2 id="modal-title">Opciones</h2>
-      <div id="modal-options"></div>
-      <form method="dialog">
-        <button id="modal-close">Cerrar</button>
+      <form id="grid-form" method="dialog">
+        <h2 id="modal-title">Tamaño de la matriz</h2>
+
+        <label class="field" for="cols-range">
+          <span>Columnas <output id="cols-output" for="cols-range">24</output></span>
+          <input type="range" id="cols-range" min="8" max="64" step="1" value="24" />
+        </label>
+
+        <label class="field" for="rows-range">
+          <span>Filas <output id="rows-output" for="rows-range">16</output></span>
+          <input type="range" id="rows-range" min="8" max="64" step="1" value="16" />
+        </label>
+
+        <label class="switch-row">
+          <input type="checkbox" id="lines-checkbox" checked />
+          <span>Mostrar líneas de la cuadrícula</span>
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" id="modal-cancel">Cancelar</button>
+          <button type="submit" id="modal-apply" class="primary">Aplicar</button>
+        </div>
       </form>
     </dialog>
+
     <script src="app.js"></script>
   </body>
 </html>
