@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+h1 {
+  margin: 0;
+}
+
+#mensaje {
+  min-height: 1.5em;
+  font-weight: 600;
+}
+
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 6px;
+}
+
+.casilla {
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.casilla:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.casilla:disabled {
+  cursor: default;
+}
+
+.casilla.ganadora {
+  background: #bbf7d0;
+  border-color: #22c55e;
+}
+
+#reiniciar {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+#reiniciar:hover {
+  background: #e2e8f0;
+}

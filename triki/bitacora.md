@@ -4,7 +4,7 @@ Funciones con js:
 - jugadores
 - casos-victoria
 
-y función main que reune todas esas y las implementa al tiempo
+y función main que reune todas esas y las implementa al tiempo aplicando metodo factory
 
 ### marcar-casilla
 `[0, 0, 0, 0, 0, 0, 0, 0, 0]` -> Cada que un jugador marca una casilla ese índice dentro del arreglo cambia al número del jugador 1 o 2.
